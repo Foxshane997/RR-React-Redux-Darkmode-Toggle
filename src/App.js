@@ -4,14 +4,14 @@ import ContentWrapper from "./components/ContentWrapper";
 import Footer from "./components/Footer";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { darkMode, lightMode, modeSlice } from "./features/modeSlice";
+import { darkMode, lightMode } from "./features/modeSlice";
 
 function App() {
   const dispatch = useDispatch();
   const mode = useSelector((state) => state.mode);
 
   const toggleMode = () => {
-    modeSlice.darkMode ? dispatch(lightMode()) : dispatch(darkMode());
+    mode.darkMode ? dispatch(lightMode()) : dispatch(darkMode());
   };
 
   return (
