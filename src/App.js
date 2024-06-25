@@ -1,13 +1,25 @@
-import './App.css';
-import Nav from './components/Nav'
-import ContentWrapper from './components/ContentWrapper'
-import Footer from './components/Footer'
+import "./App.css";
+import Nav from "./components/Nav";
+import ContentWrapper from "./components/ContentWrapper";
+import Footer from "./components/Footer";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { darkMode, lightMode, modeSlice } from "./features/modeSlice";
 
 function App() {
-  
+  const dispatch = useDispatch();
+  const mode = useSelector((state) => state.mode);
+
+  const toggleMode = () => {
+    modeSlice.darkMode ? dispatch(lightMode()) : dispatch(darkMode());
+  };
+
   return (
-    <div style={{ backgroundColor: 'white', color: 'black' }} className="App">
+    <div style={{ backgroundColor: "white", color: "black" }} className="App">
       <Nav />
+      <button onClick={toggleMode}>
+        {mode.darkMode ? "Light Mode" : "Dark Mode"}
+      </button>
       <ContentWrapper />
       <Footer />
     </div>
